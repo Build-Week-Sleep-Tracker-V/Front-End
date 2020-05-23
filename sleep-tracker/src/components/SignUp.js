@@ -13,10 +13,10 @@ const SignUp = () => {
 
 
     const submit = e =>{ 
-        //Handle submitting forms for log in and creating token for authentication
+        //Handle submitting forms for sign up and creating token for authentication and storing form values in server
         e.preventDefault()
         axios
-            .post('http://localhost:5000/api/users', data)
+            .post('http://localhost:5000/api/users', signUpData)
             .then(res=>{
                 console.log(res)
                 localStorage.setItem('token', res.data.payload)
@@ -28,8 +28,9 @@ const SignUp = () => {
     }
     return(
         <div>
-           {/* Build out forms to handle when new users want to sign up, first name, last name, email and password */}
-           <button onClick={submit}>Log in</button>
+            <h1>Sign Up</h1>
+           {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
+           <button onClick={submit}>Sign Up</button>
         </div>
     )
 }

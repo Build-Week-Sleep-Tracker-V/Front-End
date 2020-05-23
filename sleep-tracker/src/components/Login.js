@@ -13,6 +13,7 @@ const Login = () => {
         // React - onChange function to handle form changes //
 
 
+
     const submit = e =>{ 
         //Handle submitting forms for log in and creating token for authentication
         e.preventDefault()
@@ -31,7 +32,7 @@ const Login = () => {
     return(
         <div>
             <h1>Login</h1>
-            {/* Build out form for Login - firstName, lastName, password */}
+            {/* React - Build out form for Login - firstName, lastName, password */}
 
             <button onClick={submit}>Log in</button>
         </div>

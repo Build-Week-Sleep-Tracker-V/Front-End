@@ -2,34 +2,39 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
-const navSection = styled.section`
-    height:200px;
+const NavSection = styled.section`
+    height:100px;
     display:flex;
     background-color:pink;
+    align-items:flex-end;
 `;
-const navBar = styled.div`
-    height: 100px;
+const Navigation = styled.div`
+    height: 50px;
+    width:100%;
     background-color:grey;
     color:silver;
-    align-items: flex-end;
+    display:flex;
+    justify-content:space-evenly;
+    border:1px green solid;
+    
 `;
 
 
 const NavBar = props =>{
 
     return (
-        <navSection>
-            <navBar>
+        <NavSection>
+            <Navigation>
                 <div>
-                    <h1>Sleep tracker</h1>
-                <span>{props.firstName} {props.lastName}</span>
+                <h1>Sleep tracker - {props.firstName} placeholder {props.lastName}</h1>
                 </div>
                 <div>
                 <Link className='loginLink' to='/login'>Log In</Link>
                 <Link className='signUpLink'to='/signup'>Sign up</Link>
                 </div>
-            </navBar>
-        </navSection>
+            </Navigation>
+        </NavSection>
+
     )
 }
 

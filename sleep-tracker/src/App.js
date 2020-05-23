@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 
 
@@ -21,7 +21,7 @@ import NavBar from './components/NavBar';
 function App() {
 
       //React - Establish state with useState hook
-      //React - Make axios .get call to fetch data from API, then set your state to the response. Then passed down state as props to NavBar
+      //React - Make axios .get call to fetch data from API, set your state to the response. Then passed down state as props to components
       //React - Wrap axios call in useEffect hook, dont forget dependency array.
 
 
@@ -37,9 +37,10 @@ function App() {
             <PrivateRoute exact path='/sleepinput' component={SleepInput}/>
             {/* Private Routes are end points/pages restricted to only verified users with tokens through utils-axiosWithAuth */}
             
+            <Route path='/signup' component={SignUp}/>
             <Route path='/login' component={Login}/>
             <Route path='/' component={Login}/>
-            <Route path='/signup' component={SignUp}/>
+           
 
           </Switch>
       </AppSection>
