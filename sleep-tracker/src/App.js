@@ -21,7 +21,7 @@ import NavBar from './components/NavBar';
 function App() {
 
       //React - Establish state with useState hook
-      //React - Make axios .get call to fetch data from API, then set your state to the response. Then passed down state as props to components
+      //React - Make axios .get call to fetch data from API, then set your state to the response. Then passed down state as props to NavBar
       //React - Wrap axios call in useEffect hook, dont forget dependency array.
 
 
@@ -35,7 +35,7 @@ function App() {
 
             <PrivateRoute exact path='/sleepdata' component={SleepData}/>
             <PrivateRoute exact path='/sleepinput' component={SleepInput}/>
-            {/* Private Routes are end points/pages restricted to only verfiied users with tokens through utils-axiosWithAuth */}
+            {/* Private Routes are end points/pages restricted to only verified users with tokens through utils-axiosWithAuth */}
             
             <Route path='/login' component={Login}/>
             <Route path='/' component={Login}/>

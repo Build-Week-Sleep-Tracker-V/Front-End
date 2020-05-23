@@ -25,8 +25,8 @@ const NavBar = props =>{
                 <span>{props.firstName} {props.lastName}</span>
                 </div>
                 <div>
-                <Link to='/login'>Log In</Link>
-                <Link to='/signup'>Sign up</Link>
+                <Link className='loginLink' to='/login'>Log In</Link>
+                <Link className='signUpLink'to='/signup'>Sign up</Link>
                 </div>
             </navBar>
         </navSection>
