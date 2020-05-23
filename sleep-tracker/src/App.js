@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
 import PrivateRoute from './components/PrivateRoute';
@@ -17,7 +17,7 @@ function App() {
       <AppSection>  {/* Styling section for the full application */}
         <NavBar/>
           <Switch>
-            {/* Switch allows for navigating through path without having to rerender the entire page, makes for cleaner more astetically pleasing user experience */}
+            {/* Switch allows for navigating through paths without having to rerender the entire page, makes for cleaner more astetically pleasing user experience */}
 
             <PrivateRoute exact path='/sleepdata' component={SleepData}/>
             <PrivateRoute exact path='/sleepinput' component={SleepInput}/>
