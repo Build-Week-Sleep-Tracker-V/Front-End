@@ -20,7 +20,18 @@ const Navigation = styled.div`
 `;
 
 
+
+
 const NavBar = props =>{
+    
+
+    const LogOut = () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            localStorage.removeItem('token')
+        } else return console.error('no token');
+        
+    }
 
     return (
         <NavSection>
@@ -31,6 +42,9 @@ const NavBar = props =>{
                 <div>
                 <Link className='loginLink' to='/login'>Log In</Link>
                 <Link className='signUpLink'to='/signup'>Sign up</Link>
+                </div>
+                <div>
+                  <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
                 </div>
             </Navigation>
         </NavSection>

@@ -32,7 +32,7 @@ const SleepData = () => {
                 <button onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</button>
             </div>
             <div>
-                <h1>Week of:{sleepData.id[1]} - {sleepData.id[7]}</h1>
+                <h1>Week of:{sleepData.id} - {sleepData.id}</h1>
                 {/* Sleep data Card of past data */}
             </div>
         </section>
