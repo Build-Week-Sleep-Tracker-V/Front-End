@@ -15,7 +15,7 @@ import NavBar from './components/NavBar';
 
  const AppSection = styled.section`
     border:2px solid back;
-    background-color:dodgerblue;
+    background-color:silver;
  `;
 
 function App() {

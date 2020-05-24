@@ -5,13 +5,13 @@ import {Link} from 'react-router-dom';
 const NavSection = styled.section`
     height:100px;
     display:flex;
-    background-color:pink;
+    background-color:white;
     align-items:flex-end;
 `;
 const Navigation = styled.div`
     height: 50px;
     width:100%;
-    background-color:grey;
+    background-color:#121212;
     color:silver;
     display:flex;
     justify-content:space-evenly;
