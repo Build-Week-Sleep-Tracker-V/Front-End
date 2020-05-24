@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 const NavSection = styled.section`
-    height:100px;
+    height:70px;
     display:flex;
     background-color:white;
     align-items:flex-end;
@@ -16,8 +16,15 @@ const Navigation = styled.div`
     display:flex;
     justify-content:space-evenly;
     border:1px green solid;
+    align-items:center;
     
 `;
+const NavDiv = styled.div`
+    border:2px green solid;
+    width:30%;
+
+
+`
 
 
 
@@ -36,16 +43,16 @@ const NavBar = props =>{
     return (
         <NavSection>
             <Navigation>
-                <div>
-                <h1>Sleep tracker - {props.firstName} placeholder {props.lastName}</h1>
-                </div>
-                <div>
-                <Link className='loginLink' to='/login'>Log In</Link>
-                <Link className='signUpLink'to='/signup'>Sign up</Link>
-                </div>
-                <div>
-                  <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
-                </div>
+                <NavDiv>
+                    <h1>Sleep tracker - {props.firstName} placeholder {props.lastName}</h1>
+                </NavDiv>
+                <NavDiv>
+                    <Link className='loginLink' to='/login'>Log In</Link>
+                    <Link className='signUpLink'to='/signup'>Sign up</Link>
+                </NavDiv>
+                <NavDiv>
+                    <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
+                </NavDiv>
             </Navigation>
         </NavSection>
 
