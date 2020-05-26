@@ -30,7 +30,7 @@ const SleepInput = () => {
     //     }
 
     const submit = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axiosWithAuth
         .post('http://localhost:5000/api/data', sleepInput)
         .then(res => {
@@ -108,25 +108,6 @@ const SleepInput = () => {
                     />
                 </form>
             </div>
-            {/* <div className='sleepStartCard'>
-                <h3>Sleep Start</h3>
-                <h4>{Date()}</h4>
-                <img 
-                className='faceImg' 
-                alt='sleepStart1'
-                name='sleepStart'
-                value={hovered ? (1) :(0)} 
-                src={hovered ? ('sleepStart1-false')
-                : (
-                  'sleepStart1-true'  
-                )}
-                onClick={moodClick}
-                />
-
-            </div> */}
-            
-       
-
             <button type='submit'>Submit</button>
         </section>
     )
