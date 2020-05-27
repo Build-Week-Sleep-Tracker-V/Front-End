@@ -1,9 +1,11 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory, useParams} from 'react-router-dom';
+import SleepChart from './SleepChart'
 
 
 const SleepData = () => {
+    const userId = localStorage.getItem('user id')
     const { id } = useParams();
     const history = useHistory()
     const [sleepData, setSleepData] = useState([])
@@ -16,7 +18,7 @@ const SleepData = () => {
     //making axios call with token created from log in to gain access to restricted data
     const getData = () =>{
         axiosWithAuth()
-            .get(`http://localhost:5000/api/user:${id}`)
+            .get(`https://my-sleep-tracker.herokuapp.com/api/entries`)
             .then(res=>{
                 console.log(res)
                 setSleepData(res.data)
@@ -30,12 +32,20 @@ const SleepData = () => {
         <section>
             <div>
                 <h1>Hours Slept</h1> 
-                {/* Bar graph or past 7 days data */}
+                <SleepChart sleepData={sleepData}/>
                 <button onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</button>
             </div>
             <div>
                 <h1>Week of:{sleepData.id} - {sleepData.id}</h1>
-                {/* Sleep data Card of past data */}
+                   {sleepData.map(item=>{
+                    return(
+                       <div key={item.id} className='logCard'>
+                           <h4>{item.date}</h4>
+                           <h4>{item.fellAsleep} - {item.wokeUp}</h4>
+                            <h4>{(item.fellAsleep - item.wokeUp)}</h4>
+                       </div>     
+                    )
+                })}
             </div>
         </section>
     )

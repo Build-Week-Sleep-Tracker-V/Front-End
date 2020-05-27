@@ -36,6 +36,7 @@ const NavBar = props =>{
         const token = localStorage.getItem("token");
         if (token) {
             localStorage.removeItem('token')
+            localStorage.removeItem('user id')
         } else return console.error('no token');
         
     }
