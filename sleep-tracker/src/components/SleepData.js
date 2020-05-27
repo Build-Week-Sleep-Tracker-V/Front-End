@@ -31,12 +31,20 @@ const SleepData = () => {
         <section>
             <div>
                 <h1>Hours Slept</h1> 
-                {/* Bar graph or past 7 days data */}
+                <SleepChart sleepData={sleepData}/>
                 <button onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</button>
             </div>
             <div>
-                <h1>Week of:{sleepData.id} - {sleepData.id}</h1>
-                {/* Sleep data Card of past data */}
+                <h1>Week of:{sleepData.id[1]} - {sleepData.id[7]}</h1>
+                   {sleepData.map(item=>{
+                    return(
+                       <div key={item.id} className='logCard'>
+                           <h4>{item.date}</h4>
+                           <h4>{item.fellAsleep} - {item.wokeUp}</h4>
+                            <h4>{(item.fellAsleep - item.wokeUp)}</h4>
+                       </div>     
+                    )
+                })}
             </div>
         </section>
     )
