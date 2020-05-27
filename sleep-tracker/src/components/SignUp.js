@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import formSchema from './formSchema'
 import * as yup from 'yup'
-import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody} from './formStyles'
+import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody, Label, Button, Input} from './formStyles'
 
 const initialFormErrors= {
     userName: '',
@@ -74,17 +74,17 @@ const SignUp = () => {
             </SignUpText>
             <FormWrapperDiv>
                     
-                <label>Username:
-                    <input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
-                </label>
-                <label>Password:
-                    <input type='text' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
-                </label>
-                <label>Verify password:
-                    <input type='text' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
-                </label>
+                <Label>Username:
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
+                </Label>
+                <Label>Password:
+                    <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
+                </Label>
+                <Label>Verify password:
+                    <Input type='text' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
+                </Label>
                 {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
-                <button disabled = {disabled} onClick={submit}>Sign Up</button>
+                <Button disabled = {disabled} onClick={submit}>Sign Up</Button>
             </FormWrapperDiv>
         </FormBody>
     )
