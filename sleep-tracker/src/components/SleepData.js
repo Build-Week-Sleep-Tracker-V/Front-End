@@ -1,8 +1,10 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
+
 
 const SleepData = () => {
+    const { id } = useParams();
     const history = useHistory()
     const [sleepData, setSleepData] = useState([])
 
@@ -14,7 +16,7 @@ const SleepData = () => {
     //making axios call with token created from log in to gain access to restricted data
     const getData = () =>{
         axiosWithAuth()
-            .get('http://localhost:5000/api/data')
+            .get(`http://localhost:5000/api/user:${id}`)
             .then(res=>{
                 console.log(res)
                 setSleepData(res.data)

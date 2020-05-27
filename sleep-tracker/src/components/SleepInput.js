@@ -17,8 +17,7 @@ const SleepInput = () => {
         wokeUp: '',
         
         dayRating: '',
-        timeCreated: '',
-        totalTimeSlept: 0
+        timeCreated: ''
     }
 )
     // const handleChange = e =>{
@@ -99,12 +98,6 @@ const SleepInput = () => {
                     type='integer'
                     ref={register}
                     placeholder="day mood"
-                    />
-                    <input
-                    name='totalTimeSlept'
-                    type='integer'
-                    ref={register}
-                    placeholder='Time Slept'
                     />
                 </form>
             </div>
