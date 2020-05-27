@@ -49,10 +49,11 @@ const SignUp = () => {
         //Handle submitting forms for sign up and creating token for authentication and storing form values in server
         e.preventDefault()
         axios
-            .post('http://localhost:5000/api/users', signUpData)
+            .post('https://my-sleep-tracker.herokuapp.com/api/auth/register', signUpData)
             .then(res=>{
                 console.log(res)
                 localStorage.setItem('token', res.data.payload)
+                localStorage.setItem('user id', res.data.id)
                 history.push('/sleepdata')
             })
             .catch(err=>{

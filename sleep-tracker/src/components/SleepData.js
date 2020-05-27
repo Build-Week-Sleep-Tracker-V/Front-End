@@ -4,6 +4,7 @@ import {useHistory, useParams} from 'react-router-dom';
 
 
 const SleepData = () => {
+    const userId = localStorage.getItem('user id')
     const { id } = useParams();
     const history = useHistory()
     const [sleepData, setSleepData] = useState([])
@@ -16,7 +17,7 @@ const SleepData = () => {
     //making axios call with token created from log in to gain access to restricted data
     const getData = () =>{
         axiosWithAuth()
-            .get(`http://localhost:5000/api/user:${id}`)
+            .get(`https://my-sleep-tracker.herokuapp.com/api/entries`)
             .then(res=>{
                 console.log(res)
                 setSleepData(res.data)
