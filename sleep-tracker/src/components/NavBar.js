@@ -83,7 +83,7 @@ const NavBar = props =>{
                 <Link className='signUpLink'to='/signup'>Sign up</Link>
                 </div>
                 <div>
-                <Link className='loginLink' to='/login'>Log In</Link>
+                <Link className='loginLink' to='/login'>Login</Link>
                 </div>
                 <div>
                   <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
