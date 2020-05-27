@@ -10,9 +10,9 @@ color: white;
 display: flex;
 justify-content: space-around;
 align-items: center;
-width: 100vw;
-height: 100vh;
-padding: 5%;
+width: 100%;
+height: auto;
+
 @media(max-width: 700px){
     display: flex;
     flex-direction: column;}
@@ -22,7 +22,7 @@ export const FormWrapperDiv=styled.div`
     display: flex;
     flex-direction: column;
     font-family: 'Comfortaa', cursive;
-    padding: 4%;
+    padding-top: 5%;
 
 `
 export const SignUpText = styled.div`
@@ -60,6 +60,11 @@ width: 343px;
 height: 56px;
 padding: 0px 0px 0px 10px;
 margin-top: 10px;
+
+@media(max-width: 500px){
+    width: 100%;
+    height: 2.5rem;
+}
 `
 
 
