@@ -16,5 +16,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       />
     );
   };
-  
+  //Remove ! from token when testing system for proper operation
   export default PrivateRoute;

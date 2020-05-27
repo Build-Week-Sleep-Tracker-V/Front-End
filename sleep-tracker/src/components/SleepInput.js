@@ -1,25 +1,35 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom';
+import {useForm} from 'react-hook-form'
+import moment from 'moment';
 
 const SleepInput = () => {
     const history = useHistory()
+    const {register, handleSubmit} = useForm()
+    // const [hovered] = useState(false)
     const [sleepInput, setSleepInput] = useState({
-        sleepStart:0,
-        sleepEnd:0,
-        dailyMood:0
+        date: moment().format("MMM Do YY"),
+        fellAsleep: '',
+        sleepRating: '',
+
+        wakeUpRating: '',
+        wokeUp: '',
+        
+        dayRating: '',
+        timeCreated: ''
     }
 )
     // const handleChange = e =>{
-    //     e.preventDefault()
-    //     setSleepInput({
-    //     ...sleepInput,
-    //     [e.target.name]: e.target.value
-    //     })
-    // }
+    //         e.preventDefault()
+    //         setSleepInput({
+    //         ...sleepInput,
+    //         [e.target.name]: e.target.value
+    //         })
+    //     }
 
     const submit = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axiosWithAuth
         .post('http://localhost:5000/api/data', sleepInput)
         .then(res => {
@@ -29,62 +39,69 @@ const SleepInput = () => {
         .catch(err => console.log(err));
     };
 
-    const hoverClick = e =>{
-        e.preventDefault()
-        setSleepInput({
-            ...sleepInput,
-            [e.target.name]: e.target.value
-            })
+    // const moodClick = e =>{
+    //     e.preventDefault()
+    //     e.target=!hovered
 
-    }
+    //     setSleepInput({
+    //         ...sleepInput,
+    //         [e.target.name]: e.target.value
+    //         })
+    // }
     
     return(
         <section>
             <div>
-                <from>
+                <form onSubmit={handleSubmit(submit)}>
+                <h4>Sleep Start</h4>
                     <input
-                    type='button'
-                    name="sleepStart"
-                    value={sleepInput.sleepStart===1}
-                    // onChange={handleChange}
-                    onClick={hoverClick}
+                    type='date'
+                    name="date"
+                    ref={register}
+                    placeholder='date'
                     />
-                </from>
-            </div>
-            <div>
-                <from>
                     <input
-                    type='button'
-                    name="sleepStart"
-                    value={sleepInput.sleepStart===2}
-                    // onChange={handleChange}
-                    onClick={hoverClick}
+                    type='time'
+                    name='fellAsleep'
+                    ref={register}
+                    placeholder='Bed Time'
                     />
-                </from>
-            </div>
-            <div>
-                <from>
                     <input
-                    type='button'
-                    name="sleepStart"
-                    value={sleepInput.sleepStart===3}
-                    // onChange={handleChange}
-                    onClick={hoverClick}
+                    type='integer'
+                    name='sleepRating'
+                    ref={register}
+                    placeholder='Bed Rating'
                     />
-                </from>
-            </div>
-            <div>
-                <from>
+
+                <h4>Sleep End</h4>
                     <input
-                    type='button'
-                    name="sleepStart"
-                    value={sleepInput.sleepStart===4}
-                    // onChange={handleChange}
-                    onClick={hoverClick}
+                    type='time'
+                    name='wokeUp'
+                    ref={register}
+                    placeholder='Woke Up'
                     />
-                </from>
+                    <input
+                    type='integer'
+                    name='wakeUpRating'
+                    ref={register}
+                    placeholder='Wake Up Rating'
+                    />
+                <h4>Daily Mood</h4>    
+                    <input
+                    name='timeCreated'
+                    type="date"
+                    ref={register}
+                    placeholder='Time'
+                    />
+                    <input
+                    name='dayRating'
+                    type='integer'
+                    ref={register}
+                    placeholder="day mood"
+                    />
+                </form>
             </div>
-            <button onClick={submit}>Submit</button>
+            <button type='submit'>Submit</button>
         </section>
     )
 }

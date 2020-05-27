@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 const NavSection = styled.section`
-    height:100px;
+    height:70px;
     display:flex;
     background-color:white;
     align-items:flex-end;
@@ -16,8 +16,15 @@ const Navigation = styled.div`
     display:flex;
     justify-content:space-evenly;
     border:1px green solid;
+    align-items:center;
     
 `;
+const NavDiv = styled.div`
+    border:2px green solid;
+    width:30%;
+
+
+`
 
 
 
