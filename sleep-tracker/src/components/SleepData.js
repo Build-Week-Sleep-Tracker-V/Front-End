@@ -1,6 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory, useParams} from 'react-router-dom';
+import SleepChart from './SleepChart'
 
 
 const SleepData = () => {
@@ -35,7 +36,7 @@ const SleepData = () => {
                 <button onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</button>
             </div>
             <div>
-                <h1>Week of:{sleepData.id[1]} - {sleepData.id[7]}</h1>
+                <h1>Week of:{sleepData.id} - {sleepData.id}</h1>
                    {sleepData.map(item=>{
                     return(
                        <div key={item.id} className='logCard'>
