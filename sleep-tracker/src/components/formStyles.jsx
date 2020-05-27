@@ -36,7 +36,7 @@ color: #FFFFFF;
 border-radius: 18px;
 padding: 15px 15px;
 text-align: center;
-margin-top: 20px;
+margin: 20px;
 
 `
 export const Input = styled.input`
