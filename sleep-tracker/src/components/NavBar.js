@@ -43,16 +43,16 @@ const NavBar = props =>{
     return (
         <NavSection>
             <Navigation>
-                <NavDiv>
-                    <h1>Sleep tracker - {props.firstName} placeholder {props.lastName}</h1>
-                </NavDiv>
-                <NavDiv>
-                    <Link className='loginLink' to='/login'>Log In</Link>
-                    <Link className='signUpLink'to='/signup'>Sign up</Link>
-                </NavDiv>
-                <NavDiv>
-                    <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
-                </NavDiv>
+                <div>
+                <h1>Sleep tracker - placeholder {props.userName}</h1>
+                </div>
+                <div>
+                <Link className='loginLink' to='/login'>Log In</Link>
+                <Link className='signUpLink'to='/signup'>Sign up</Link>
+                </div>
+                <div>
+                  <Link className='logOutLink' to='/login' onClick={LogOut}>Log Out</Link>  
+                </div>
             </Navigation>
         </NavSection>
 
