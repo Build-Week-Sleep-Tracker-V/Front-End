@@ -40,7 +40,7 @@ const Login = () => {
             <FormWrapperDiv>
                 <h1>Login</h1>
                 <Label>Username:
-                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange} innerRef={} />
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange}/>
                 </Label>
                 <Label>Password:
                     <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
