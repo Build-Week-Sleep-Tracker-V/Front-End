@@ -37,7 +37,7 @@ const NavBar = props =>{
         <NavSection>
             <Navigation>
                 <div>
-                <h1>Sleep tracker - {props.firstName} placeholder {props.lastName}</h1>
+                <h1>Sleep tracker - placeholder {props.userName}</h1>
                 </div>
                 <div>
                 <Link className='loginLink' to='/login'>Log In</Link>

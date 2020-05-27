@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import formSchema from './formSchema'
 import * as yup from 'yup'
+import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody} from './formStyles'
 
 const initialFormErrors= {
     userName: '',
@@ -65,23 +66,27 @@ const SignUp = () => {
         }, [signUpData])
 
     return(
-       <form>
-        <div>
-                <h1>Sign Up</h1>
-                <h1>Login</h1>
-                    <label>Username:
-                        <input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
-                    </label>
-                    <label>Password:
-                        <input type='text' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
-                    </label>
-                    <label>Verify password:
-                        <input type='text' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
-                    </label>
-            {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
-            <button disabled = {disabled} onClick={submit}>Sign Up</button>
-            </div>
-        </form>
+       <FormBody>
+           <GlobalStyles />
+           <SignUpText>
+                <h1>Let's get started!</h1>
+                <p>Let Sleep Tracker help you disover your ideal sleep schedule.</p>
+            </SignUpText>
+            <FormWrapperDiv>
+                    
+                <label>Username:
+                    <input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
+                </label>
+                <label>Password:
+                    <input type='text' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
+                </label>
+                <label>Verify password:
+                    <input type='text' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
+                </label>
+                {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
+                <button disabled = {disabled} onClick={submit}>Sign Up</button>
+            </FormWrapperDiv>
+        </FormBody>
     )
 }
 
