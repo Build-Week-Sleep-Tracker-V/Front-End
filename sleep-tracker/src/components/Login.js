@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody, Label, Button, Input} from './formStyles'
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = () => {
@@ -35,21 +36,21 @@ const Login = () => {
     }
     
     return(
-        <form className='form container'>
-            <div>
+        <FormBody className='form container'>
+            <FormWrapperDiv>
                 <h1>Login</h1>
-                <label>Username:
-                    <input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange} />
-                </label>
-                <label>Password:
-                    <input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
-                </label>
+                <Label>Username:
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange} />
+                </Label>
+                <Label>Password:
+                    <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
+                </Label>
             
                 {/* React - Build out form for Login - firstName, lastName, password */}
 
-                <button onClick={submit}>Log in</button>
-            </div>
-        </form>
+                <Button onClick={submit}>Log in</Button>
+            </FormWrapperDiv>
+        </FormBody>
     )
 }
 
