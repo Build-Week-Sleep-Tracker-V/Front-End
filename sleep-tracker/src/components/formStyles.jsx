@@ -13,12 +13,17 @@ align-items: center;
 width: 100vw;
 height: 100vh;
 padding: 5%;
+@media(max-width: 700px){
+    display: flex;
+    flex-direction: column;}
+
 `
 export const FormWrapperDiv=styled.div`
     display: flex;
     flex-direction: column;
     font-family: 'Comfortaa', cursive;
     padding: 4%;
+
 `
 export const SignUpText = styled.div`
     font-family: 'Comfortaa', cursive;
@@ -38,6 +43,14 @@ padding: 15px 15px;
 text-align: center;
 margin: 20px;
 
+&:hover {
+    color: #39869D;
+    border: 1px solid #39869D;
+    background-color: #121212; 
+  }
+&:disabled{
+    background: #BDCFD5;
+}  
 `
 export const Input = styled.input`
 background: linear-gradient(0deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)), #121212;

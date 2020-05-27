@@ -22,8 +22,8 @@ const SignUp = () => {
     })
 
     const onInputChange = evt=>{
-        const [name] = evt.target
-        const[value] = evt.target
+        const name = evt.target.name
+        const value = evt.target.value
         yup
         .reach(formSchema, name)
         .validate(value)
@@ -38,7 +38,8 @@ const SignUp = () => {
             [name]: err.errors[0]
           })
         })
-        setSignUpData({...signUpData, [name]: value})
+        setSignUpData({...signUpData, [name]: value
+        })
     }
 
     
@@ -78,10 +79,10 @@ const SignUp = () => {
                     <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
                 </Label>
                 <Label>Password:
-                    <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
+                    <Input type='password' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />
                 </Label>
                 <Label>Verify password:
-                    <Input type='text' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
+                    <Input type='password' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
                 </Label>
                 {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
                 <Button disabled = {disabled} onClick={submit}>Sign Up</Button>

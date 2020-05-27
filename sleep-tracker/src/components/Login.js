@@ -15,8 +15,8 @@ const Login = () => {
         // React - onChange function to handle form changes //
 
     const onInputChange = evt=>{
-        const [name] = evt.target
-        const[value] = evt.target
+        const name = evt.target.name
+        const value = evt.target.value
         setLoginData({...loginData, [name]: value})
     }
 
@@ -40,7 +40,7 @@ const Login = () => {
             <FormWrapperDiv>
                 <h1>Login</h1>
                 <Label>Username:
-                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange} />
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange} innerRef={} />
                 </Label>
                 <Label>Password:
                     <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
@@ -48,7 +48,7 @@ const Login = () => {
             
                 {/* React - Build out form for Login - firstName, lastName, password */}
 
-                <Button onClick={submit}>Log in</Button>
+                <Button onClick={submit}>Login</Button>
             </FormWrapperDiv>
         </FormBody>
     )
