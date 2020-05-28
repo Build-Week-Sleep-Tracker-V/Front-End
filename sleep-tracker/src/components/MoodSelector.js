@@ -1,40 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Moodcontainer = styled.div`
+export const MoodContainer = styled.div`
 display: flex;
 `
+ 
+// const onRadioChange = evt =>{
+//     const name = evt.target.name
+//     const value = evt.target.value
+//     setSleepInput({
+//       ...sleepInput,
+//       mood: {
+//         ...sleepInput.mood, [name]: value
+//       }
+//     })
+//     }
 
-function MoodSelector(props){
-    const{values}=props
+function MoodSelector(onRadioChange){
 
-    const onCheckboxChange = evt =>{
-        const {name} = evt.target
-        const {checked} = evt.target
-        setSleepInput({
-          ...sleepInput,
-          Mood: {
-            ...sleepInput.dayRating, [name]: checked,
-          }
-        })
-      
-        }
 
     return(
-    <h4>Select the emoji that best represents your mood for the day.</h4>
-        <MoodContainer className='checkboxes'>
-            
+   
+        <MoodContainer className='radios'>
+             <h4>Select the emoji that best represents your mood for the day.</h4>
             <label>U+1F603
-                <input type='checkbox' name='verry happy' checked={values.dayRating.verryHappy} onChange={onCheckboxChange}/>
+                <input type='radio' name='mood' value='4' onChange={onRadioChange}/>
             </label>
             <label>U+1F60C
-                <input type='checkbox' name='somewhat happy' checked={values.dayRating.somewhatHappy} onChange={onCheckboxChange}/>
+                <input type='radio' name='mood' value='3'  onChange={onRadioChange}/>
             </label>
             <label>U+1F614
-                <input type='checkbox' name='somewhat unhappy' checked={values.dayRating.somewhatUnhappy} onChange={onCheckboxChange}/>
+                <input type='radio' name='mood' value='2' onChange={onRadioChange}/>
             </label>
             <label>U+1F629
-                <input type='checkbox' name='verry unhappy' checked={values.dayRating.verryUnhappy} onChange={onCheckboxChange}/>
+                <input type='radio' name='mood' value='1'  onChange={onRadioChange}/>
             </label>
        </MoodContainer>
     )
