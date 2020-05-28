@@ -7,6 +7,7 @@ import MoodSelector from './MoodSelector'
 
 const SleepInput = () => {
     const history = useHistory()
+    const userId = localStorage.getItem('user id')
     const {register, handleSubmit} = useForm()
     // const [hovered] = useState(false)
     const [sleepInput, setSleepInput] = useState({
@@ -17,18 +18,12 @@ const SleepInput = () => {
 
     }
 )
-    // const handleChange = e =>{
-    //         e.preventDefault()
-    //         setSleepInput({
-    //         ...sleepInput,
-    //         [e.target.name]: e.target.value
-    //         })
-    //     }
+
 
     const submit = e => {
         // e.preventDefault()
         axiosWithAuth
-        .post('http://localhost:5000/api/data', sleepInput)
+        .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp , userId:userId })
         .then(res => {
             console.log(res)
             history.push('/sleepdata');
@@ -36,15 +31,6 @@ const SleepInput = () => {
         .catch(err => console.log(err));
     };
 
-    // const moodClick = e =>{
-    //     e.preventDefault()
-    //     e.target=!hovered
-
-    //     setSleepInput({
-    //         ...sleepInput,
-    //         [e.target.name]: e.target.value
-    //         })
-    // }
     const onRadioChange = evt =>{
         const name = evt.target.name
         const value = evt.target.value
@@ -55,6 +41,7 @@ const SleepInput = () => {
           }
         })
         }
+
     
     return(
         <section>
@@ -73,7 +60,6 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Bed Time'
                     />
-                    
 
                 <h4>Sleep End</h4>
                     <input
@@ -82,9 +68,9 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Woke Up'
                     />
+
                 <MoodSelector register = {register} />   
 
-                    
                 </form>
             </div>
             <button type='submit'>Submit</button>

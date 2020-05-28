@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       <Route
         {...rest}
         render={() => {
-          if (!token) {
+          if (token) {
             return <Component />;
           } else {
             return <Redirect to="/login" />;
@@ -16,5 +16,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       />
     );
   };
-  //Remove ! from token when testing system for proper operation
+
   export default PrivateRoute;
