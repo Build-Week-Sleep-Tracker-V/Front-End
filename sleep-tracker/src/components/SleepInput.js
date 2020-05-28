@@ -72,7 +72,9 @@ console.log(sleepInput)
                     placeholder='Woke Up'
                     />
 
+
                 <MoodSelector sleepInput={sleepInput} onChange = {onChange} />   
+
 
                 </form>
             </div>
