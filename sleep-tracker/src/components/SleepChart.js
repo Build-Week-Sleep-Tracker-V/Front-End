@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
 
 
 const SleepChart = () => {
