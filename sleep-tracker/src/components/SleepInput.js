@@ -69,7 +69,7 @@ console.log(sleepInput)
                     placeholder='Woke Up'
                     />
 
-                <MoodSelector register = {register} />   
+                <MoodSelector onRadioChange = {onRadioChange} />   
 
                 </form>
             </div>
