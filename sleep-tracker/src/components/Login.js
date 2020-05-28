@@ -7,9 +7,9 @@ import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody, Label, Button, Input
 const Login = () => {
     const history = useHistory()
     const [loginData, setLoginData] = useState({
-        userName:'',
+        username:'',
         password: ''
-        // React - fill in properties needed for log in form that will be used for state management //
+ 
     })
 
         // React - onChange function to handle form changes //
@@ -24,12 +24,16 @@ const Login = () => {
         //Handle submitting forms for log in and creating token for authentication
         e.preventDefault()
         axios
-            .post('https://my-sleep-tracker.herokuapp.com/api/auth/login', loginData)
+            .post('https://my-sleep-tracker.herokuapp.com/api/auth/login', {username: loginData.username , password: loginData.password })
             .then(res=>{
-                console.log(res)
-                localStorage.setItem('token', res.data.payload)
-                localStorage.setItem('user id', res.data.id)
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('user id', res.data.userId)
+                const token = localStorage.getItem('token')
+                const userId = localStorage.getItem('user id')
                 history.push('/sleepdata')
+                console.log(token)
+                console.log(userId)
+                console.log(res)
             })
             .catch(err=>{
                 console.log(err)
@@ -41,14 +45,11 @@ const Login = () => {
             <FormWrapperDiv>
                 <h1>Login</h1>
                 <Label>Username:
-                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={loginData.userName} onChange={onInputChange}/>
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='username' value={loginData.userName} onChange={onInputChange}/>
                 </Label>
                 <Label>Password:
                     <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
                 </Label>
-            
-                {/* React - Build out form for Login - firstName, lastName, password */}
-
                 <Button onClick={submit}>Login</Button>
             </FormWrapperDiv>
         </FormBody>

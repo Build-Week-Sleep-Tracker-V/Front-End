@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import {FormWrapperDiv, SignUpText, GlobalStyles, FormBody, Label, Button, Input} from './formStyles'
 
 const initialFormErrors= {
-    userName: '',
+    username: '',
     password: '',
     verify: ''
   }
@@ -15,7 +15,7 @@ const SignUp = () => {
     const [disabled, setDisabled] = useState(true)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [signUpData, setSignUpData] = useState({
-        userName:'',
+        username:'',
         password: '',
         verify: '',
         // React - fill in properties needed for log in form that will be used for state management //
@@ -49,12 +49,10 @@ const SignUp = () => {
         //Handle submitting forms for sign up and creating token for authentication and storing form values in server
         e.preventDefault()
         axios
-            .post('https://my-sleep-tracker.herokuapp.com/api/auth/register', signUpData)
+            .post('https://my-sleep-tracker.herokuapp.com/api/auth/register', {username: signUpData.username , password:signUpData.password })
             .then(res=>{
                 console.log(res)
-                localStorage.setItem('token', res.data.payload)
-                localStorage.setItem('user id', res.data.id)
-                history.push('/sleepdata')
+                history.push('/login')
             })
             .catch(err=>{
                 console.log(err)
@@ -77,7 +75,7 @@ const SignUp = () => {
             <FormWrapperDiv>
                     
                 <Label>Username:
-                    <Input type='text' placeholder='Create a username' maxLength='100' name='userName' value={signUpData.userName} onChange={onInputChange} />
+                    <Input type='text' placeholder='Create a username' maxLength='100' name='username' value={signUpData.userName} onChange={onInputChange} />
                 </Label>
                 <Label>Password:
                     <Input type='password' placeholder='Create a password' maxLength='100' name='password' value={signUpData.password} onChange={onInputChange} />

@@ -6,32 +6,24 @@ import moment from 'moment';
 
 const SleepInput = () => {
     const history = useHistory()
+    const userId = localStorage.getItem('user id')
     const {register, handleSubmit} = useForm()
     // const [hovered] = useState(false)
     const [sleepInput, setSleepInput] = useState({
         date: moment().format("MMM Do YY"),
         fellAsleep: '',
-        sleepRating: '',
 
-        wakeUpRating: '',
         wokeUp: '',
         
-        dayRating: '',
-        timeCreated: ''
+        dayRating: ''
     }
 )
-    // const handleChange = e =>{
-    //         e.preventDefault()
-    //         setSleepInput({
-    //         ...sleepInput,
-    //         [e.target.name]: e.target.value
-    //         })
-    //     }
+
 
     const submit = e => {
         // e.preventDefault()
         axiosWithAuth
-        .post('http://localhost:5000/api/data', sleepInput)
+        .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp , userId:userId })
         .then(res => {
             console.log(res)
             history.push('/sleepdata');
@@ -39,15 +31,6 @@ const SleepInput = () => {
         .catch(err => console.log(err));
     };
 
-    // const moodClick = e =>{
-    //     e.preventDefault()
-    //     e.target=!hovered
-
-    //     setSleepInput({
-    //         ...sleepInput,
-    //         [e.target.name]: e.target.value
-    //         })
-    // }
     
     return(
         <section>
@@ -66,12 +49,6 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Bed Time'
                     />
-                    <input
-                    type='integer'
-                    name='sleepRating'
-                    ref={register}
-                    placeholder='Bed Rating'
-                    />
 
                 <h4>Sleep End</h4>
                     <input
@@ -80,19 +57,7 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Woke Up'
                     />
-                    <input
-                    type='integer'
-                    name='wakeUpRating'
-                    ref={register}
-                    placeholder='Wake Up Rating'
-                    />
                 <h4>Daily Mood</h4>    
-                    <input
-                    name='timeCreated'
-                    type="date"
-                    ref={register}
-                    placeholder='Time'
-                    />
                     <input
                     name='dayRating'
                     type='integer'
