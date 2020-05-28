@@ -8,17 +8,19 @@ import MoodSelector from './MoodSelector'
 const SleepInput = () => {
     const history = useHistory()
     const userId = localStorage.getItem('user id')
-    const {register, handleSubmit} = useForm()
-    // const [hovered] = useState(false)
+    // const {register, handleSubmit} = useForm()
+
     const [sleepInput, setSleepInput] = useState({
         date: moment().format("MMM Do YY"),
         fellAsleep: '',
         wokeUp: '',   
-        mood: '',
+        mood: '', 
 
     }
+    
 )
 console.log(sleepInput)
+
 
     const submit = e => {
         // e.preventDefault()
@@ -31,33 +33,33 @@ console.log(sleepInput)
         .catch(err => console.log(err));
     };
 
-    const onRadioChange = evt =>{
-        const name = evt.target.name
-        const value = evt.target.value
-        setSleepInput({
-          ...sleepInput,
-          mood: {
-            ...sleepInput.mood, [name]: value
-          }
-        })
-        }
+    const onChange = e =>{
+    e.preventDefault()
+    setSleepInput({
+      ...sleepInput,
+        [e.target.name]: e.target.value
 
+    })
+    }
+    
     
     return(
         <section>
             <div>
-                <form onSubmit={handleSubmit(submit)}>
+                <form onSubmit={submit}>
                 <h4>Sleep Start</h4>
                     <input
                     type='date'
                     name="date"
-                    ref={register}
+                    value={sleepInput.date}
+                    onChange={onChange}
                     placeholder='date'
                     />
                     <input
                     type='time'
                     name='fellAsleep'
-                    ref={register}
+                    value={sleepInput.fellAsleep}
+                    onChange={onChange}
                     placeholder='Bed Time'
                     />
 
@@ -65,11 +67,14 @@ console.log(sleepInput)
                     <input
                     type='time'
                     name='wokeUp'
-                    ref={register}
+                    value={sleepInput.wokeUp}
+                    onChange={onChange}
                     placeholder='Woke Up'
                     />
 
-                <MoodSelector onRadioChange = {onRadioChange} />   
+
+                <MoodSelector sleepInput={sleepInput} onChange = {onChange} />   
+
 
                 </form>
             </div>
