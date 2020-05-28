@@ -77,9 +77,10 @@ console.log(sleepEntry)
                     onChange={onChange}
                     placeholder='Woke Up'
                     />
-
+      
                 <MoodSelector onChange = {onChange} />   
                 <button type='submit'>Submit</button>
+      
                 </form>
             </div>     
         </section>
