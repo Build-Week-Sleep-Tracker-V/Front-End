@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import Emoji from 'react-emoji-render'
+
 
 export const MoodContainer = styled.div`
 display: flex;
@@ -16,24 +18,24 @@ display: flex;
 //     })
 //     }
 
-function MoodSelector(onRadioChange){
-
+function MoodSelector(props){
+    
 
     return(
    
         <MoodContainer className='radios'>
              <h4>Select the emoji that best represents your mood for the day.</h4>
-            <label>U+1F603
-                <input type='radio' name='mood' value='4' onChange={onRadioChange}/>
+            <label>😃
+                <input type='radio' name='mood' value='4' ref={props.register}/>
             </label>
-            <label>U+1F60C
-                <input type='radio' name='mood' value='3'  onChange={onRadioChange}/>
+            <label>🙂
+                <input type='radio' name='mood' value='3'  ref={props.register}/>
             </label>
-            <label>U+1F614
-                <input type='radio' name='mood' value='2' onChange={onRadioChange}/>
+            <label>😐
+                <input type='radio' name='mood' value='2' ref={props.register}/>
             </label>
-            <label>U+1F629
-                <input type='radio' name='mood' value='1'  onChange={onRadioChange}/>
+            <label>🙁
+                <input type='radio' name='mood' value='1'  ref={props.register}/>
             </label>
        </MoodContainer>
     )

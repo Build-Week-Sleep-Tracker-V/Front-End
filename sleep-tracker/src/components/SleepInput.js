@@ -3,6 +3,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom';
 import {useForm} from 'react-hook-form'
 import moment from 'moment';
+import MoodSelector from './MoodSelector'
 
 const SleepInput = () => {
     const history = useHistory()
@@ -11,13 +12,9 @@ const SleepInput = () => {
     const [sleepInput, setSleepInput] = useState({
         date: moment().format("MMM Do YY"),
         fellAsleep: '',
-        sleepRating: '',
+        wokeUp: '',   
+        mood: '',
 
-        wakeUpRating: '',
-        wokeUp: '',
-        
-        dayRating: '',
-        timeCreated: ''
     }
 )
     // const handleChange = e =>{
@@ -48,6 +45,16 @@ const SleepInput = () => {
     //         [e.target.name]: e.target.value
     //         })
     // }
+    const onRadioChange = evt =>{
+        const name = evt.target.name
+        const value = evt.target.value
+        setSleepInput({
+          ...sleepInput,
+          mood: {
+            ...sleepInput.mood, [name]: value
+          }
+        })
+        }
     
     return(
         <section>
@@ -66,12 +73,7 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Bed Time'
                     />
-                    <input
-                    type='integer'
-                    name='sleepRating'
-                    ref={register}
-                    placeholder='Bed Rating'
-                    />
+                    
 
                 <h4>Sleep End</h4>
                     <input
@@ -80,25 +82,9 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Woke Up'
                     />
-                    <input
-                    type='integer'
-                    name='wakeUpRating'
-                    ref={register}
-                    placeholder='Wake Up Rating'
-                    />
-                <h4>Daily Mood</h4>    
-                    <input
-                    name='timeCreated'
-                    type="date"
-                    ref={register}
-                    placeholder='Time'
-                    />
-                    <input
-                    name='dayRating'
-                    type='integer'
-                    ref={register}
-                    placeholder="day mood"
-                    />
+                <MoodSelector register = {register} />   
+
+                    
                 </form>
             </div>
             <button type='submit'>Submit</button>
