@@ -1,6 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory, useParams} from 'react-router-dom';
+import moment from 'moment'
 
 
 
@@ -28,13 +29,17 @@ const SleepData = () => {
             })
 
     }
+
+
     const idealSleep = () =>{
         
         const hoursSlept = []
         for (var i=0; i<sleepData.length;i++){
             if (sleepData[i].mood === 4){
-                hoursSlept.push(SleepData[i].wokeUp - SleepData[i].fellAsleep) 
-            } return hoursSlept.reduce((a,b)=>a+b, 0)/hoursSlept.length
+                var time1= moment(SleepData[i].wokeUp, 'HH:MM')
+                var time2 = moment(SleepData[i].fellAsleep, 'HH:MM')
+                hoursSlept.push(time1.diff(time2, 'hours')) 
+            } return hoursSlept
         }
     }
     return(
