@@ -19,13 +19,13 @@ const SleepInput = () => {
     }
     
 )
-        console.log(sleepInput)
+console.log(sleepInput)
 
 
     const Submit = e => {
         e.preventDefault()
         axiosWithAuth
-        .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp , mood:sleepInput.mood, userId:userId })
+        .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp ,mood: sleepInput.mood, userId:userId })
         .then(res => {
             console.log(res)
             history.push('/sleepdata');
