@@ -1,31 +1,37 @@
-import React, {useEffect , useState} from 'react';
+import React, { useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom';
-import {useForm} from 'react-hook-form'
 import moment from 'moment';
 import MoodSelector from './MoodSelector'
 
 const SleepInput = () => {
     const history = useHistory()
     const userId = localStorage.getItem('user id')
-    // const {register, handleSubmit} = useForm()
+    console.log(`this is user ID ${userId}`)
 
     const [sleepInput, setSleepInput] = useState({
         date: moment().format("MMM Do YY"),
         fellAsleep: '',
         wokeUp: '',   
-        mood: '', 
+        mood: 0, 
 
     }
     
 )
 console.log(sleepInput)
+//bunding state and changing strings in mood and user ID to integer to be passed to the back end
+const sleepEntry = {
+    sleepStart: sleepInput.fellAsleep, 
+    sleepEnd: sleepInput.wokeUp,
+    mood: parseInt(sleepInput.mood),
+    userId: parseInt(userId) }
 
+console.log(sleepEntry)
 
     const Submit = e => {
         e.preventDefault()
-        axiosWithAuth
-        .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp ,mood: sleepInput.mood, userId:userId })
+        axiosWithAuth()
+        .post('https://my-sleep-tracker.herokuapp.com/api/entries', sleepEntry)
         .then(res => {
             console.log(res)
             history.push('/sleepdata');
@@ -71,14 +77,12 @@ console.log(sleepInput)
                     onChange={onChange}
                     placeholder='Woke Up'
                     />
-
-
-                <MoodSelector sleepInput={sleepInput} onChange = {onChange} />   
-
-
+      
+                <MoodSelector onChange = {onChange} />   
+                <button type='submit'>Submit</button>
+      
                 </form>
-            </div>
-            <button type='submit'>Submit</button>
+            </div>     
         </section>
     )
 }
