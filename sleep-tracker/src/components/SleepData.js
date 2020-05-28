@@ -32,7 +32,7 @@ const SleepData = () => {
         
         const hoursSlept = []
         for (var i=0; i<sleepData.length;i++){
-            if (sleepData[i].mood = 4){
+            if (sleepData[i].mood === 4){
                 hoursSlept.push(SleepData[i].wokeUp - SleepData[i].fellAsleep) 
             } return hoursSlept.reduce((a,b)=>a+b, 0)/hoursSlept.length
         }
