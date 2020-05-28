@@ -1,14 +1,14 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory, useParams} from 'react-router-dom';
-import SleepChart from './SleepChart'
+
 
 
 const SleepData = () => {
     const userId = localStorage.getItem('user id')
     const { id } = useParams();
     const history = useHistory()
-    const [sleepData, setSleepData] = useState([])
+    const [sleepData, setSleepData] = useState({})
 
     //useEffect fires on component mount, fetching sleep log to set to state for previous logs and bar graph
     useEffect(()=>{
@@ -28,14 +28,25 @@ const SleepData = () => {
             })
 
     }
+    const idealSleep = () =>{
+        
+        const hoursSlept = []
+        for (var i=0; i<sleepData.length;i++){
+            if (sleepData[i].mood = 4){
+                hoursSlept.push(SleepData[i].wokeUp - SleepData[i].fellAsleep) 
+            } return hoursSlept.reduce((a,b)=>a+b, 0)/hoursSlept.length
+        }
+    }
     return(
         <section>
+            <h4>Your ideal amount of sleep is:{idealSleep()}</h4>
+            
             <div>
                 <h1>Hours Slept</h1> 
-                <SleepChart sleepData={sleepData}/>
+
                 <button onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</button>
             </div>
-            <div>
+            {/* <div>
                 <h1>Week of:{sleepData.id} - {sleepData.id}</h1>
                    {sleepData.map(item=>{
                     return(
@@ -46,7 +57,7 @@ const SleepData = () => {
                        </div>     
                     )
                 })}
-            </div>
+            </div> */}
         </section>
     )
 }
