@@ -73,6 +73,7 @@ const SleepInput = () => {
                     />
 
                 <MoodSelector sleepInput={sleepInput} onChange = {onChange} />   
+
                 </form>
             </div>
             <button type='submit'>Submit</button>
