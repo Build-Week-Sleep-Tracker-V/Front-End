@@ -22,8 +22,8 @@ const SleepInput = () => {
 console.log(sleepInput)
 
 
-    const submit = e => {
-        // e.preventDefault()
+    const Submit = e => {
+        e.preventDefault()
         axiosWithAuth
         .post('https://my-sleep-tracker.herokuapp.com/api/entires', {sleepStart: sleepInput.fellAsleep , sleepEnd: sleepInput.wokeUp ,mood: sleepInput.mood, userId:userId })
         .then(res => {
@@ -46,7 +46,7 @@ console.log(sleepInput)
     return(
         <section>
             <div>
-                <form onSubmit={submit}>
+                <form onSubmit={Submit}>
                 <h4>Sleep Start</h4>
                     <input
                     type='date'
