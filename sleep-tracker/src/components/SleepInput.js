@@ -3,6 +3,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom';
 import {useForm} from 'react-hook-form'
 import moment from 'moment';
+import MoodSelector from './MoodSelector'
 
 const SleepInput = () => {
     const history = useHistory()
@@ -12,10 +13,9 @@ const SleepInput = () => {
     const [sleepInput, setSleepInput] = useState({
         date: moment().format("MMM Do YY"),
         fellAsleep: '',
+        wokeUp: '',   
+        mood: '',
 
-        wokeUp: '',
-        
-        dayRating: ''
     }
 )
 
@@ -30,6 +30,17 @@ const SleepInput = () => {
         })
         .catch(err => console.log(err));
     };
+
+    const onRadioChange = evt =>{
+        const name = evt.target.name
+        const value = evt.target.value
+        setSleepInput({
+          ...sleepInput,
+          mood: {
+            ...sleepInput.mood, [name]: value
+          }
+        })
+        }
 
     
     return(
@@ -57,13 +68,9 @@ const SleepInput = () => {
                     ref={register}
                     placeholder='Woke Up'
                     />
-                <h4>Daily Mood</h4>    
-                    <input
-                    name='dayRating'
-                    type='integer'
-                    ref={register}
-                    placeholder="day mood"
-                    />
+
+                <MoodSelector register = {register} />   
+
                 </form>
             </div>
             <button type='submit'>Submit</button>
