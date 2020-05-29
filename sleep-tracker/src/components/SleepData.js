@@ -1,7 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import {useHistory, useParams, Link} from 'react-router-dom';
-import moment from 'moment';
+import {useHistory, Link} from 'react-router-dom';
+
 import styled from 'styled-components';
 
 const CardSection = styled.section`
@@ -21,8 +21,6 @@ const Card = styled.div`
 
 `
 const SleepData = () => {
-    const userId = localStorage.getItem('user id')
-    const { id } = useParams();
     const history = useHistory()
     const [sleepData, setSleepData] = useState([])
 
@@ -45,10 +43,6 @@ const SleepData = () => {
             })
 
     }
-
-
-            
-
 
     // const idealSleep = () =>{
         

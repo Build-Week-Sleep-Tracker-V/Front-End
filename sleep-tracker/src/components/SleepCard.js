@@ -1,7 +1,6 @@
 import React, {useEffect , useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory, useParams} from 'react-router-dom';
-import moment from 'moment';
 import styled from 'styled-components';
 import MoodSelector from './MoodSelector'
 
@@ -22,12 +21,21 @@ const EditingCardSection = styled.section`
 `
 const SleepCard = () => {
     const [editing, setEditing] = useState(false);
+    const userId = localStorage.getItem('user id')
     const { id } = useParams();
     const history = useHistory()
     const [sleepData, setSleepData] = useState([])
 
-    console.log(editing, id, sleepData)
+    // console.log(editing, id, sleepData)
 
+    //extracting state properties to change mood and id strings into integers
+    const sleepEntry = {
+        sleepStart: sleepData.sleepStart, 
+        sleepEnd: sleepData.sleepEnd,
+        mood: parseInt(sleepData.mood),
+        userId: parseInt(userId) }
+
+        
     const onChange = e =>{
         e.preventDefault()
         setSleepData({
@@ -37,10 +45,11 @@ const SleepCard = () => {
         })
         }
 
+    //Use effect fires when component mounts, then sending out axios call
     useEffect(()=>{
         getData()
     },[])
-    console.log(id)
+
     const getData = () =>{
         axiosWithAuth()
             .get(`https://my-sleep-tracker.herokuapp.com/api/entries/${id}`)
@@ -66,12 +75,14 @@ const deleteEntry = () =>{
         })
 
 }
-const saveEntry = () =>{
+const saveEntry = e =>{
+    e.preventDefault()
     axiosWithAuth()
-        .post(`https://my-sleep-tracker.herokuapp.com/api/entries`)
+        .put(`https://my-sleep-tracker.herokuapp.com/api/entries/${id}`, sleepEntry)
         .then(res=>{
             console.log(res)
-            setSleepData(res.data)
+            setEditing(!editing)
+            history.push('/sleepdata');
         })
         .catch(err=>{
             console.log(err)
@@ -111,7 +122,7 @@ const editEntry = () =>{
                     />
       
                 <MoodSelector onChange = {onChange} />   
-                <button type='submit'>Submit</button>
+                <button type='submit'>Save Edit</button>
       
                 </form>)
                 :(
