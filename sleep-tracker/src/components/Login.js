@@ -29,9 +29,8 @@ const Login = () => {
                 const token = localStorage.getItem('token')
                 const userId = localStorage.getItem('user id')
                 history.push('/sleepdata')
-                console.log(token)
-                console.log(userId)
-                console.log(res)
+                console.log(token , userId, res)
+                
             })
             .catch(err=>{
                 console.log(err)

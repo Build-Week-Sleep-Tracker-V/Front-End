@@ -75,7 +75,7 @@ const SleepData = () => {
                        <Card
                        key={item.id}
                        >
-                           <Link to={`/sleepcard/${item.id}`}>Click Me!</Link>
+                           <Link to={`/sleepcard/${item.id}`}>Edit / Delete</Link>
                            <h4>Sleep cycle: {item.sleepStart} - {item.sleepEnd}</h4>
                             <h4>Hours Slept: ???</h4>
                             <h4>Mood: {item.mood}</h4>    
