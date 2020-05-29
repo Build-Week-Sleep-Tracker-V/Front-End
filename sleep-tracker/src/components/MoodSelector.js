@@ -14,27 +14,27 @@ function MoodSelector(props){
     
 
     return(
-        <section>
-            <MoodContainer className='radios'>
-                <label>😃
-                    <input type='radio' name='mood' value='4'
-                        onChange={props.onChange}/>
-                </label>
-                <label>🙂
-                    <input type='radio' name='mood' value='3'
-                        onChange={props.onChange}/>
-                </label>
-                <label>😐
-                    <input type='radio' name='mood' value='2'
-                        onChange={props.onChange}/>
-                </label>
-                <label>🙁
-                    <input type='radio' name='mood' value='1'
-                        onChange={props.onChange}/>
-                </label>
-        </MoodContainer>
-        <h4>Select the emoji that best represents your mood for the day.</h4>
-       </section>
+   <section>
+        <MoodContainer className='radios'>
+             <h4>Select the emoji that best represents your mood for the day.</h4>
+            <label><span role='img' aria-label='very happy'>😃</span>
+                <input type='radio' name='mood' value='4'
+                    onChange={props.onChange}/>
+            </label>
+            <label><span role='img' aria-label='somewhat happy'>🙂</span>
+                <input type='radio' name='mood' value='3'
+                    onChange={props.onChange}/>
+            </label>
+            <label><span role='img' aria-label='meh'>😐</span>
+                <input type='radio' name='mood' value='2'
+                    onChange={props.onChange}/>
+            </label>
+            <label><span role='img' aria-label='grumpy'>🙁</span>
+                <input type='radio' name='mood' value='1'
+                    onChange={props.onChange}/>
+            </label>
+       </MoodContainer>
+    </section>  
     )
 }
 

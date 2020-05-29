@@ -39,12 +39,13 @@ const sleepEntry = {
     };
 
     const onChange = e =>{
-    e.preventDefault()
+    // e.preventDefault()
     setSleepInput({
       ...sleepInput,
         [e.target.name]: e.target.value
 
     })
+    
     }
     
     
