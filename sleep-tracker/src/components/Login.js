@@ -12,8 +12,6 @@ const Login = () => {
  
     })
 
-        // React - onChange function to handle form changes //
-
     const onInputChange = evt=>{
         const name = evt.target.name
         const value = evt.target.value
@@ -48,7 +46,7 @@ const Login = () => {
                     <Input type='text' placeholder='Create a username' maxLength='100' name='username' value={loginData.userName} onChange={onInputChange}/>
                 </Label>
                 <Label>Password:
-                    <Input type='text' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
+                    <Input type='password' placeholder='Create a password' maxLength='100' name='password' value={loginData.password} onChange={onInputChange} />
                 </Label>
                 <Button onClick={submit}>Login</Button>
             </FormWrapperDiv>

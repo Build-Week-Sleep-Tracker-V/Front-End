@@ -5,6 +5,8 @@ import Emoji from 'react-emoji-render';
 
 export const MoodContainer = styled.div`
 display: flex;
+justify-content:center;
+margin-top:3%;
 `
  
 
@@ -12,7 +14,7 @@ function MoodSelector(props){
     
 
     return(
-   
+   <section>
         <MoodContainer className='radios'>
              <h4>Select the emoji that best represents your mood for the day.</h4>
             <label><span role='img' aria-label='very happy'>😃</span>
@@ -32,6 +34,7 @@ function MoodSelector(props){
                     onChange={props.onChange}/>
             </label>
        </MoodContainer>
+    </section>  
     )
 }
 

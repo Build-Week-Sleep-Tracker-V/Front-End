@@ -14,11 +14,10 @@ const SleepInput = () => {
         fellAsleep: '',
         wokeUp: '',   
         mood: 0, 
-
-    }
-    
+}
 )
-console.log(sleepInput)
+// console.log(sleepInput)
+
 //bunding state and changing strings in mood and user ID to integer to be passed to the back end
 const sleepEntry = {
     sleepStart: sleepInput.fellAsleep, 
@@ -26,7 +25,7 @@ const sleepEntry = {
     mood: parseInt(sleepInput.mood),
     userId: parseInt(userId) }
 
-console.log(sleepEntry)
+// console.log(sleepEntry)
 
     const Submit = e => {
         e.preventDefault()
