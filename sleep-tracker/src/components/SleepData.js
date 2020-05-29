@@ -46,25 +46,52 @@ const SleepData = () => {
     }
 
   
-    const idealSleep = () =>{
+    function idealSleep(sleepData){
+        const minutes = []
+        const hoursSlept = []
+        var sum = 0
         
-        const hoursSlept = [0]
-        let sum = hoursSlept.reduce((previous, current) => current += previous);
-        let avg = sum / hoursSlept.length;
         for (var i=0; i<sleepData.length;i++){
             if (sleepData[i].mood === 4){
-                var startTime=`02/01/2020 ${i.sleepStart}`;
-                var endTime = `02/02/2020 ${i.sleepEnd}`;
-                hoursSlept.push(moment.utc(moment(endTime,"DD/MM/YYYY HH:mm:ss").diff(moment(startTime,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm"));
+                var startTime=`02/01/2020 ${sleepData[i].sleepStart}`;
+                var endTime = `02/02/2020 ${sleepData[i].sleepEnd}`;
+                var timeSlept =(moment.utc(moment(endTime,"DD/MM/YYYY HH:mm:ss").diff(moment(startTime,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm"));
+                hoursSlept.push(timeSlept)
+                } 
+        //     console.log(`time time slept is ${hoursSlept}`)
+        //     for (var time=0; time<hoursSlept.length;time++){
+        //         var split = hoursSlept[time].split(':');
+        //         minutes.push((+split[0]) * 60 + (+split[1]));
+        //     }
+        //     console.log(`minutes ${minutes}`)
+        //     for (var min = 0; min< minutes.length; min++){
+        //         sum += minutes[min];
+        //     }
+        //    console.log(`here is the sum ${sum}`)
+            }
+            const numbersum = arr => arr.reduce((a,b) => a + b, 0)
 
-            } 
-        }
-        return avg
+        console.log(`time time slept is ${numbersum(hoursSlept)}`)
+        for (var time=0; time<hoursSlept.length;time++){
+            var split = hoursSlept[time].split(':');
+            minutes.push((+split[0]) * 60 + (+split[1]));
+            }
+        console.log(`minutes ${minutes}`)
+        for (var min = 0; min< minutes.length; min++){
+            sum += minutes[min];
+            }
+       console.log(`here is the sum ${sum}`)
+        console.log(`should be an array ${hoursSlept}`)
+        var avg = sum/minutes.length;
+        var sleephours = Math.floor(avg / 60);          
+        var sleepminutes = avg % 60;
+
+        return `${sleephours} hours and ${sleepminutes} minutes`
     }
     return(
         <section>
             <h4>Your ideal amount of sleep is</h4>
-                {idealSleep()}
+                {idealSleep(sleepData)}
                 
             
             <div>
@@ -79,7 +106,7 @@ const SleepData = () => {
                         var endTime = `02/02/2020 ${item.sleepEnd}`;
                         var timeSlept = moment.utc(moment(endTime,"DD/MM/YYYY HH:mm:ss").diff(moment(startTime,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm")
 
-                        console.log(timeSlept)
+                        console.log(`time slept ${timeSlept}` )
                        
                     return(
                        <Card
