@@ -29,6 +29,8 @@ const SleepCard = () => {
     // console.log(editing, id, sleepData)
 
     //extracting state properties to change mood and id strings into integers
+    
+    
     const sleepEntry = {
         sleepStart: sleepData.sleepStart, 
         sleepEnd: sleepData.sleepEnd,
