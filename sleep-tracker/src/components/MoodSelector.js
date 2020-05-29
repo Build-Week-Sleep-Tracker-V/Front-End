@@ -15,19 +15,19 @@ function MoodSelector(props){
    
         <MoodContainer className='radios'>
              <h4>Select the emoji that best represents your mood for the day.</h4>
-            <label>😃
-                <input type='radio' name='mood' value='4'
+            <label><span role='img' aria-label='very happy'>😃</span>
+                <input type='radio' name='mood' value='4' checked={+}
                     onChange={props.onChange}/>
             </label>
-            <label>🙂
+            <label><span role='img' aria-label='somewhat happy'>🙂</span>
                 <input type='radio' name='mood' value='3'
                     onChange={props.onChange}/>
             </label>
-            <label>😐
+            <label><span role='img' aria-label='meh'>😐</span>
                 <input type='radio' name='mood' value='2'
                     onChange={props.onChange}/>
             </label>
-            <label>🙁
+            <label><span role='img' aria-label='grumpy'>🙁</span>
                 <input type='radio' name='mood' value='1'
                     onChange={props.onChange}/>
             </label>
