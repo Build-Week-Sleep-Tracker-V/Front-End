@@ -10,6 +10,7 @@ import Login from './components/Login';
 import SleepData from './components/SleepData';
 import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
+import SleepCard from './components/SleepCard';
 //Imported Components for use in App.js
 
 
@@ -19,11 +20,6 @@ import NavBar from './components/NavBar';
  `;
 
 function App() {
-
-      //React - Establish state with useState hook
-      //React - Make axios .get call to fetch data from API, set your state to the response. Then passed down state as props to components
-      //React - Wrap axios call in useEffect hook, dont forget dependency array.
-
 
   return (
   <Router>
@@ -35,6 +31,7 @@ function App() {
 
             <PrivateRoute exact path='/sleepdata' component={SleepData}/>
             <PrivateRoute exact path='/sleepinput' component={SleepInput}/>
+            <PrivateRoute path='/sleepcard/:id' component={SleepCard}/>
             {/* Private Routes are end points/pages restricted to only verified users with tokens through utils-axiosWithAuth */}
             
             <Route path='/signup' component={SignUp}/>
