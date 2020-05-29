@@ -16,7 +16,7 @@ function MoodSelector(props){
         <MoodContainer className='radios'>
              <h4>Select the emoji that best represents your mood for the day.</h4>
             <label><span role='img' aria-label='very happy'>😃</span>
-                <input type='radio' name='mood' value='4' checked={+}
+                <input type='radio' name='mood' value='4'
                     onChange={props.onChange}/>
             </label>
             <label><span role='img' aria-label='somewhat happy'>🙂</span>
