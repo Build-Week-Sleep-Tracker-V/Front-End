@@ -83,7 +83,6 @@ const SignUp = () => {
                 <Label>Verify password:
                     <Input type='password' placeholder='Retype your password' maxLength='100' name='verify' value={signUpData.verify} onChange={onInputChange} />
                 </Label>
-                {/* React - Build out forms to handle when new users want to sign up, first name, last name, email and password */}
                 <Button disabled = {disabled} onClick={submit}>Sign Up</Button>
             </FormWrapperDiv>
         </FormBody>
