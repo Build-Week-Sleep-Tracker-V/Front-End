@@ -15,6 +15,7 @@ const CardSection = styled.section`
     flex-direction:column;
     background: #121212;
     color: white;
+    font-family: 'Comfortaa', cursive;
 `
 const Card = styled.div`
     width:50%;
