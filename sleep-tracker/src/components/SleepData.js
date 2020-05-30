@@ -121,17 +121,29 @@ const SleepData = () => {
 
         return `${sleephours} hours and ${sleepminutes} minutes`
     }
+
+    function moodInterpreter(mood){
+        if (mood === 1){
+            return `Very Unhappy! 🙁`
+        } else if(mood === 2){
+            return `Somewhat Unhappy. 😐`
+        }else if(mood ===3){
+            return `Somewhat Happy! 🙂`
+        }else {
+            return `Verry Happy! 😃`
+        }
+    }
     return(
         <MainSection>
             
             <CardSection>
                 <IdealSleepSection>
-                <h4>Your ideal amount of sleep is</h4>
+                <h1>Your ideal amount of sleep is</h1>
                 {idealSleep(sleepData)}
                 
             
                 <div>
-                    <h1>Hours Slept</h1> 
+                   
 
                     <AddButton onClick={()=>{history.push('/sleepinput')}}>+ ADD ENTRY</AddButton>
                 </div>
@@ -151,7 +163,7 @@ const SleepData = () => {
                            <Link to={`/sleepcard/${item.id}`}>Edit this entry</Link>
                            <h4>Sleep cycle: {item.sleepStart} - {item.sleepEnd}</h4>
                             <h4>Hours Slept: {timeSlept}</h4>
-                            <h4>Mood: {item.mood}</h4>    
+                            <h4>Mood: {moodInterpreter(item.mood)}</h4>    
                        </Card>     
                     )
                 })}
