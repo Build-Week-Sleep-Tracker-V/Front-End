@@ -3,6 +3,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {useHistory} from 'react-router-dom';
 import moment from 'moment';
 import MoodSelector from './MoodSelector'
+import {Button, Input} from './formStyles'
 
 const SleepInput = () => {
     const history = useHistory()
@@ -54,14 +55,14 @@ const sleepEntry = {
             <div>
                 <form onSubmit={Submit}>
                 <h4>Sleep Start</h4>
-                    <input
+                    <Input
                     type='date'
                     name="date"
                     value={sleepInput.date}
                     onChange={onChange}
                     placeholder='date'
                     />
-                    <input
+                    <Input
                     type='time'
                     name='fellAsleep'
                     value={sleepInput.fellAsleep}
@@ -70,7 +71,7 @@ const sleepEntry = {
                     />
 
                 <h4>Sleep End</h4>
-                    <input
+                    <Input
                     type='time'
                     name='wokeUp'
                     value={sleepInput.wokeUp}
@@ -79,7 +80,7 @@ const sleepEntry = {
                     />
       
                 <MoodSelector onChange = {onChange} />   
-                <button type='submit'>Submit</button>
+                <Button type='submit'>Submit</Button>
       
                 </form>
             </div>     
