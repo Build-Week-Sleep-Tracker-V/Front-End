@@ -160,7 +160,9 @@ const SleepData = () => {
                        <Card
                        key={item.id}
                        >
+
                            <Link to={`/sleepcard/${item.id}`}>Edit this entry</Link>
+
                            <h4>Sleep cycle: {item.sleepStart} - {item.sleepEnd}</h4>
                             <h4>Hours Slept: {timeSlept}</h4>
                             <h4>Mood: {moodInterpreter(item.mood)}</h4>    

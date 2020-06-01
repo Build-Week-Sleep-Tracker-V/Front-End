@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Emoji from 'react-emoji-render';
 
-
-export const MoodContainer = styled.div`
+export const MoodSection = styled.section`
 display: flex;
 flex-direction: column;
 justify-content:center;
+`
+export const MoodContainer = styled.div`
 margin-top:3%;
 `
 const MoodRadios=styled.div`
@@ -24,13 +25,15 @@ function MoodSelector(props){
     
 
     return(
-   <section>
+    <MoodSection>
         <MoodContainer className='radios'>
+
             <div>
              <h4>Select the emoji that best represents your mood for the day.</h4>
             </div>
             <MoodRadios>
             <EachMood><span role='img' aria-label='very happy'>😃</span>
+
                 <input type='radio' name='mood' value='4'
                     onChange={props.onChange}/>
             </EachMood>
@@ -47,10 +50,12 @@ function MoodSelector(props){
             <EachMood><span role='img' aria-label='grumpy'>🙁</span>
                 <input type='radio' name='mood' value='1'
                     onChange={props.onChange}/>
+
             </EachMood>
             </MoodRadios>
+
        </MoodContainer>
-    </section>  
+    </MoodSection>
     )
 }
 
