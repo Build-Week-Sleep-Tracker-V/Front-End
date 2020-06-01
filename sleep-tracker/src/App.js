@@ -16,7 +16,9 @@ import SleepCard from './components/SleepCard';
 
  const AppSection = styled.section`
     border:2px solid back;
-    background-color:silver;
+    background-color:#121212;
+    color: white;
+    font-family: 'Comfortaa', cursive;
  `;
 
 function App() {

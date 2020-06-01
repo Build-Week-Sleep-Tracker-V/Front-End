@@ -4,12 +4,22 @@ import Emoji from 'react-emoji-render';
 
 export const MoodSection = styled.section`
 display: flex;
+flex-direction: column;
 justify-content:center;
 `
 export const MoodContainer = styled.div`
 margin-top:3%;
 `
- 
+const MoodRadios=styled.div`
+display: flex;
+justify-content: center;
+
+`
+
+const EachMood = styled.label`
+padding: 2%;
+font-size: 2rem;
+`
 
 function MoodSelector(props){
     
@@ -17,23 +27,33 @@ function MoodSelector(props){
     return(
     <MoodSection>
         <MoodContainer className='radios'>
-            <label><span role='img' aria-label='very happy'>😃</span>
+
+            <div>
+             <h4>Select the emoji that best represents your mood for the day.</h4>
+            </div>
+            <MoodRadios>
+            <EachMood><span role='img' aria-label='very happy'>😃</span>
+
                 <input type='radio' name='mood' value='4'
                     onChange={props.onChange}/>
-            </label>
-            <label><span role='img' aria-label='somewhat happy'>🙂</span>
+            </EachMood>
+            
+            
+            <EachMood><span role='img' aria-label='somewhat happy'>🙂</span>
                 <input type='radio' name='mood' value='3'
                     onChange={props.onChange}/>
-            </label>
-            <label><span role='img' aria-label='meh'>😐</span>
+            </EachMood>
+            <EachMood><span role='img' aria-label='meh'>😐</span>
                 <input type='radio' name='mood' value='2'
                     onChange={props.onChange}/>
-            </label>
-            <label><span role='img' aria-label='grumpy'>🙁</span>
+            </EachMood>
+            <EachMood><span role='img' aria-label='grumpy'>🙁</span>
                 <input type='radio' name='mood' value='1'
                     onChange={props.onChange}/>
-            </label>
-            <h4>Select the emoji that best represents your mood for the day.</h4>
+
+            </EachMood>
+            </MoodRadios>
+
        </MoodContainer>
     </MoodSection>
     )
